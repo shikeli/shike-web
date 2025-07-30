@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f9f9f9;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="contact-form">
+    <h2>Contact Us</h2>
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Email Address" required />
+    <input type="tel" name="phone" placeholder="Phone Number" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+      console.log('Form submitted:', data);
+      alert('Thank you! Your information has been submitted.');
+
+      // If you want to actually send this to a server:
+      // fetch('https://your-backend-endpoint.com/api/submit', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(data),
+      // }).then(res => res.json()).then(response => {
+      //   console.log('Success:', response);
+      // }).catch(error => {
+      //   console.error('Error:', error);
+      // });
+    });
+  </script>
+
+</body>
+</html>
